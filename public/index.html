@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="manifest" href="./manifest.json">
+        <!-- favicon -->
+        <link rel="shortcut icon" type="image/png" href="./images/res/mipmap-hdpi/ic_launcher.png"/> 
+    </head>
+    <body>
+        <h1>oh my gaw</h1>
+        <p>shit works</p>
+        <button id="btn-install" onclick="deferredPrompt.prompt()">Install app</button>
+    </body>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js', { scope: '/' }).then(function(registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function(err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+
+        var deferredPrompt;
+        window.addEventListener('beforeinstallprompt', function(event) {
+            console.log('before install prompt triggered...')
+            event.preventDefault();
+            deferredPrompt = event;
+        });
+    </script>
+</html> 
