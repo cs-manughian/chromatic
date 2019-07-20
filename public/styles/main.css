@@ -1,0 +1,30 @@
+
+html, body {
+    padding: 2%;
+    text-align: center;
+}
+
+audio {
+    display: block;
+    margin: 2em auto;
+}
+
+#record-container {
+    padding: 2em 2em;
+    padding-bottom: 3em;
+    display: table;
+    min-width: 360px;
+    margin: auto;
+}
+
+#record-indicator {
+    margin: 1em 0;
+}
+
+#record-indicator svg {
+    vertical-align: middle;
+}
+
+.hide {
+    display: none;
+}

@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="manifest" href="./manifest.json">
+		<link rel="stylesheet" href="styles/templated-fullmotion.css" />
+		<link rel="stylesheet" href="styles/main.css" />
         <!-- favicon -->
-        <link rel="shortcut icon" type="image/png" href="./images/res/mipmap-hdpi/ic_launcher.png"/> 
+        <link rel="shortcut icon" type="image/png" href="./images/res/mipmap-hdpi/ic_launcher.png"/> 		
     </head>
     <body>
-        <h1>oh my gaw</h1>
-        <p>shit works</p>
-        <button id="btn-install" onclick="deferredPrompt.prompt()">Install app</button>
+        <!-- <button id="btn-install" onclick="deferredPrompt.prompt()">Install app</button> -->
+        <div class="box">
+            <div class="inner">
+                <h3>welcome to chromatic</h3>
+                <h4>let's play ~</h4>
+                <p>click <code>Record</code> to toggle on an audio recording.</p>
+                <button id="btn-record" class="style3">RECORD</button>
+            </div>
+        </div>
+        <div id="record-container" class="box">
+            <h3>records</h3>
+            <hr>
+            <div id="record-indicator" class="hide">
+                <svg width="25px" height="25px">
+                    <defs>
+                        <filter id="blur">
+                            <feGaussianBlur stdDeviation="1" />
+                        </filter>
+                    </defs>
+                    <circle cx="12" cy="11" r="5" fill="red" filter="url(#blur)"></circle>
+                </svg>
+                RECORDING...
+            </div>
+        </div>
     </body>
     <script>
         if ('serviceWorker' in navigator) {
@@ -23,9 +47,9 @@
 
         var deferredPrompt;
         window.addEventListener('beforeinstallprompt', function(event) {
-            console.log('before install prompt triggered...')
             event.preventDefault();
             deferredPrompt = event;
         });
     </script>
+    <script src="./scripts/audio.js"></script>
 </html> 
